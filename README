@@ -1,0 +1,26 @@
+*Helena Khalilieh 
+
+*Event-Driven Chat Server
+
+*chatServer.h:This file declares the functionality associated with your implementation of a chatserver.
+ chatServer.c:It implement the functions in chatServer
+
+* The functions that we have in the chatServer.c:
+ - int init_pool(conn_pool_t* pool): Init the conn_pool_t structure,return value - 0 on success, -1 on failure
+ - int add_conn(int sd, conn_pool_t* pool): Add connection when new client connects the server.
+ - int remove_conn(int sd, conn_pool_t* pool):Remove connection when a client closes connection, or clean memory if server stops.
+ - int add_msg(int sd,char* buffer,int len,conn_pool_t* pool): Add msg to the queues of all connections (except of the origin).
+ - int write_to_client(int sd,conn_pool_t* pool): Write msg to client.
+  
+
+*How to compile the code in the terminal :gcc -Wall -g -c chatServer chatServer.c
+                                          ./chatServer 10000
+                                         
+-We have to use two or more external terminal because we need to do the telnet,the compile code: telnet localhost 10000
+                                                                                                 "msg we want to write"  
+
+* The program does function that the chat is forward each incoming message over all client connections except for the client connection over which the message was received.
+     If the server ends in CTRL-C, it should clean everything and exit.
+
+ 
+                                                                                        
